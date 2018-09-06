@@ -1,0 +1,7 @@
+{
+  "name": "InvolveMe",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
