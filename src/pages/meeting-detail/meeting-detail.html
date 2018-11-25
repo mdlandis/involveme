@@ -1,0 +1,75 @@
+<!--
+  Generated template for the MeetingDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<script src="node_modules/chart.js/src/chart.js"></script>
+
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>View Meeting</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content>
+    
+    <div *ngFor="let meet of meeting | async"> <!-- TODO: Fix this hack -->
+       <ion-toolbar color="primary">
+          <h1>{{ meet.title }} <br> (Meeting ID: {{ meet.id }}) <br></h1>
+          <!-- <h4>When appropriate, answer the questions and press submit.</h4> -->
+        </ion-toolbar>
+        <div id="my-content">
+        <form *ngIf="phase==0"
+          [formGroup]="answerQuestionsForm"
+          (ngSubmit)="manage(answerQuestionsForm.value)">
+              <div formArrayName="questions">
+                 <section
+                  [formGroupName]="i"
+                  *ngFor="let q of answerQuestionsForm.controls.questions.controls; let i = index">
+                  <ion-card>
+                    <ion-item-divider text-wrap><span>{{meet.questions[i].ask}}</span></ion-item-divider>
+                    <ion-list required formControlName="selectedItem" radio-group>
+                      <ion-item class="ess-padding" *ngFor="let response of meet.questions[i].responses">
+                        <ion-label> {{ response[0] }} </ion-label>
+                        <ion-radio [value]="response[0]"></ion-radio>
+                      </ion-item>
+                    </ion-list>
+                  </ion-card>
+                </section>
+              </div>        
+          <button ion-button [disabled]="!answerQuestionsForm.valid" block>Submit</button>    
+        </form> 
+        <div *ngIf="phase==1">
+          <ion-card id="refresh-header">
+            <span id="refresh-header-text">There are {{meet.attendees}} people in this meeting, and so far {{meet.respondees}} have responded.</span>
+            <br><button ion-button (click)="refresh()">Refresh Results</button> 
+          </ion-card>
+            <ion-item-group>
+              <ion-card *ngFor="let q of meet.questions; let j = index">
+                <div class="question-header"> {{q.ask}} </div>
+                  <div style="display: block">
+                      <canvas baseChart height='100'
+                                  [data]="doughnutChartData[j]"
+                                  [labels]="doughnutChartLabels[j]"
+                                  [chartType]="doughnutChartType"
+                                  (chartHover)="chartHovered($event)"
+                                  (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+              </ion-card>
+            </ion-item-group>
+            
+        </div> 
+        <div *ngIf="phase==2">
+            <ion-card>Thanks for your response! You can now leave the meeting.</ion-card>
+        </div> 
+      </div>     
+      </div>
+     
+</ion-content>

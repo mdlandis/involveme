@@ -1,0 +1,28 @@
+<!--
+  Generated template for the CreateMeetingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Create Meeting</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="createMeeting()">
+    <ion-item>
+      <ion-label>Title (optional)</ion-label>
+      <ion-input type="text" [(ngModel)]="title" name="title"></ion-input>
+    </ion-item>      
+    <ion-item>
+      <ion-label>Only creator can see results</ion-label>
+      <ion-toggle [(ngModel)]="anon" name="anon" checked="false"></ion-toggle>
+    </ion-item>
+      <button ion-button type="submit" block>Create Meeting</button>
+      </form>
+</ion-content>

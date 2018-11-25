@@ -1,0 +1,52 @@
+page-meeting-detail {
+  ion-label {
+      font-size: 1.0em;
+  }
+
+  ion-item {
+      padding: 0px;
+  }
+
+  .less-padding {
+    padding: 0px !important;
+  }  
+
+  span {
+      font-size: 1.2em;
+      color: black;
+  }
+
+  ion-toolbar {
+    background-color: #2234d6;
+    color: white;
+  }
+
+  h1 {
+    padding-left: 20px;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+
+  h4 {
+    text-align: center;
+    color: white;
+    font-style: italic;
+  }
+
+  #my-content {
+      padding: 10px;
+  }
+
+  .question-header {
+      text-align: center;
+      font-size: 1.5em;
+  }
+
+  ion-card {
+      padding: 15px
+  }
+
+  #refresh-header {
+      text-align: center;
+  }
+}

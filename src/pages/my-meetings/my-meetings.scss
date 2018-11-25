@@ -1,0 +1,26 @@
+page-my-meetings {
+    ion-toolbar {
+        background-color: #2234d6;
+        color: white;
+    }
+
+    h1 {
+        padding-left: 20px;
+        padding-bottom: 5px;
+    }
+
+    .noneYet {
+        padding: 10px;
+        color: grey;
+        font-style: italic;
+    }
+
+    span {
+        font-size: 1.4em;
+    }
+
+    .leave-button {
+        position: relative;
+        top: -10px;
+    }
+}
